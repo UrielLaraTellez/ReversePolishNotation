@@ -11,12 +11,10 @@ public class App {
     public static int evalRPN(String[] tokens) {
         Stack <String> stack = new Stack <String> ();
         int x, y ;
-        String result = "";
-        String get = "";
         String choice;
         int value = 0;
-        String p = "" ;
-        
+        String resultado = "" ;
+
         for (int i = 0 ; i<tokens.length ; i++){
             if (tokens[i] != "+" && tokens[i] != "-" && tokens[i] != "*" && tokens[i] != "/"){
                 stack.push(tokens[i]);
@@ -28,48 +26,39 @@ public class App {
             
             switch (choice){
                 case "+":
-                    get = stack.pop();
-                    x = Integer.parseInt(get);
-                    get = stack.pop();
-                    y = Integer.parseInt(get);
+                    x = Integer.parseInt(stack.pop());
+                    y = Integer.parseInt(stack.pop());
                     value = x + y ;
-                    result = p+value;
-                    stack.push (result);
+                    resultado = Integer.toString(value);
+                    stack.push (resultado);
                     break;
                 case "-":
-                    get = stack.pop();
-                    x = Integer.parseInt(get);
-                    get = stack.pop();
-                    y = Integer.parseInt(get);
-                    value = x - y ;
-                    result = p+value;
-                    stack.push (result);
+                    x = Integer.parseInt(stack.pop());
+                    y = Integer.parseInt(stack.pop());
+                    value = y - x ;
+                    resultado = Integer.toString(value);
+                    stack.push (resultado);
                     break;
                 case "*":
-                    get = stack.pop();
-                    x = Integer.parseInt(get);
-                    get = stack.pop();
-                    y = Integer.parseInt(get);
+                    x = Integer.parseInt(stack.pop());
+                    y = Integer.parseInt(stack.pop());
                     value = x * y ;
-                    result = p+value;
-                    stack.push (result);
+                    resultado = Integer.toString(value);
+                    stack.push (resultado);
                     break;
                 case "/":
-                    get = stack.pop();
-                    x = Integer.parseInt(get);
-                    get = stack.pop();
-                    y = Integer.parseInt(get);
-                    value = x / y ;
-                    result = p+value;
-                    stack.push (result);
+                    x = Integer.parseInt(stack.pop());
+                    y = Integer.parseInt(stack.pop());
+                    value = y / x ;
+                    resultado = Integer.toString(value);
+                    stack.push (resultado);
                     break;
                     
                 default:
                     continue;
             }
         }
-        get = stack.pop();
-        return Integer.parseInt(get);
+        return Integer.parseInt(stack.pop());
   
     }
 }
